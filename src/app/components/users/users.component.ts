@@ -14,8 +14,8 @@ export class UsersComponent {
 
   constructor(private apiService: ApiService) {}
 
-  ngOnInit(): void {
-    this.users = this.getUsers()
+  async ngOnInit(): Promise<any> {
+    this.users = await this.getUsers()
   }
 
   async getUsers() {

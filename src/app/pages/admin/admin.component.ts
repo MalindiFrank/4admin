@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../api/api.service';
 import { UsersComponent } from "../../components/users/users.component";
+import { ProductsComponent } from "../../components/products/products.component";
 
 @Component({
   selector: 'app-admin',
-  imports: [UsersComponent],
+  imports: [UsersComponent, ProductsComponent],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css',
 })

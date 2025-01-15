@@ -9,7 +9,7 @@
         <th>Username</th>
         <th>Email</th>
         <th>Phone</th>
-        <!-- <th>Address</th> -->
+        <th>Address</th>
       </tr>
     </thead>
     <tbody>
@@ -19,7 +19,11 @@
         <td>{{ user.username }}</td>
         <td>{{ user.email }}</td>
         <td>{{ user.phone }}</td>
-        <td>{{ user.address.city }}</td>
+        <td>
+          <span>{{ user.address.number }} </span>
+          <span>{{ user.address.street }}, </span>
+          <span>{{ user.address.city }}</span>
+        </td>
       </tr>
       <!-- <tr>
         <td>Jane</td>

@@ -70,13 +70,3 @@ export class ApiService {
     }
   }
 }
-
-
-const application= () => {
-  return (
-    <div>
-    
-    </div>
-  )
-}
-export default application;
