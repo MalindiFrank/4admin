@@ -1,1 +1,26 @@
 <p>dashboard works!</p>
+
+<div class="table">
+    <table>
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>title</th>
+          <th>price</th>
+          <th>category</th>
+          <th>description</th>
+          <th>image</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{ product.id }}</td>
+          <td>{{ product.title }}</td>
+          <td>R {{ product.price }}</td>
+          <td>{{ product.category }}</td>
+          <td>{{ product.description.slice(0, 16) }}...</td>
+          <td>{{ product.image.slice(0, 16) }}...</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
