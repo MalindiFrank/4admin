@@ -61,7 +61,7 @@ export class ApiService {
     }
   }
 
-  async getAllUsers(): Promise<void> {
+  async getAllUsers(): Promise<any> {
     try {
       let response = fetch('https://fakestoreapi.com/users');
       return (await response).json();
@@ -70,3 +70,13 @@ export class ApiService {
     }
   }
 }
+
+
+const application= () => {
+  return (
+    <div>
+    
+    </div>
+  )
+}
+export default application;

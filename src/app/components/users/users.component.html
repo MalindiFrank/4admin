@@ -9,26 +9,26 @@
         <th>Username</th>
         <th>Email</th>
         <th>Phone</th>
-        <th>Address</th>
+        <!-- <th>Address</th> -->
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>johndoe</td>
-        <td>johndoe&#64;example.com</td>
-        <td>123-456-7890</td>
-        <td>123 Elm St, Springfield</td>
+      <tr *ngFor="let user of users">
+        <td>{{ user.name.firstname }}</td>
+        <td>{{ user.name.lastname }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.address.city }}</td>
       </tr>
-      <tr>
+      <!-- <tr>
         <td>Jane</td>
         <td>Smith</td>
         <td>janesmith</td>
         <td>janesmith&#64;example.com</td>
         <td>098-765-4321</td>
         <td>456 Oak St, Metropolis</td>
-      </tr>
+      </tr> -->
     </tbody>
   </table>
 </div>
