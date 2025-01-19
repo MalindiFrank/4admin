@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../api/api.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
