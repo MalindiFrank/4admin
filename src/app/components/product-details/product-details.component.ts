@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../api/api.service';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-details',
@@ -11,20 +11,26 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductDetailsComponent {
   product: any = {};
-  productId: number | null = null;
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute) {}
+  constructor(
+    private apiService: ApiService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   async ngOnInit(): Promise<any> {
-    this.productId = this.route.snapshot.params['id'];
-    console.log(this.productId);
+    this.product = await this.getProduct(this.getProductId());
+  }
 
-    this.product = await this.getProduct(this.productId);
+  getProductId() {
+    return this.route.snapshot.params['id'];
   }
 
   async getProduct(id: number | null) {
     if (id) {
       return await this.apiService.getOneProduct(id);
+    } else {
+      this.router.navigate(['dashboard']);
     }
   }
 }

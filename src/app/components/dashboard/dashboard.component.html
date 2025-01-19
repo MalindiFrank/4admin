@@ -1,11 +1,13 @@
 <p>dashboard works!</p>
 
 <div class="container">
-  <div *ngFor="let product of products" (click)="goToProductDetails(product.id)">
+  <div
+    *ngFor="let product of products"
+    (click)="goToProductDetails(product.id)"
+  >
     <img [src]="product.image" />
     <p>{{ product.id }}</p>
     <p>{{ product.title }}</p>
     <p>R {{ product.price }}</p>
-    <p>tttt</p>
   </div>
 </div>
