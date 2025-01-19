@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../api/api.service';
-import { DashboardComponent } from "../../components/dashboard/dashboard.component";
 import { ProductDetailsComponent } from "../../components/product-details/product-details.component";
 
 @Component({

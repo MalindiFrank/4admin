@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../api/api.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,14 +12,17 @@ import { CommonModule } from '@angular/common';
 export class DashboardComponent {
   products: any = [];
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private router: Router) {}
 
   async ngOnInit(): Promise<any> {
     this.products = await this.getProducts();
   }
 
   async getProducts() {
-    console.log(await this.apiService.getAllProducts());
     return await this.apiService.getAllProducts();
+  }
+
+  goToProductDetails(id: number): void {
+    this.router.navigate([`products/${id}`])
   }
 }
