@@ -1,0 +1,11 @@
+
+img {
+  height: 5rem;
+  width: 5rem;
+}
+
+.product {
+  width: 40svw;
+  height: 60svh;
+  overflow-y: scroll;
+}
