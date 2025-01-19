@@ -6,21 +6,25 @@ import { ApiService } from '../../api/api.service';
   selector: 'app-products',
   imports: [CommonModule],
   templateUrl: './products.component.html',
-  styleUrl: './products.component.css'
+  styleUrl: './products.component.css',
 })
 export class ProductsComponent {
+  products: any = [];
 
-    products: any = []
-  
-    constructor(private apiService: ApiService) {}
-  
-    async ngOnInit(): Promise<any> {
-      this.products = await this.getProducts()
-    }
-  
-    async getProducts() {
-      console.log((await this.apiService.getAllProducts()))
-      return (await this.apiService.getAllProducts())
-    }
+  constructor(private apiService: ApiService) {}
 
+  async ngOnInit(): Promise<any> {
+    this.products = await this.getProducts();
+  }
+
+  async getProducts() {
+    return await this.apiService.getAllProducts();
+  }
+
+  async deleleProduct(id: number) {
+    if (id) {
+      this.products.splice(id - 1, 1);
+      return await this.apiService.deleteProduct(id);
+    }
+  }
 }

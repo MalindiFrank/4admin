@@ -23,6 +23,13 @@ export class DashboardComponent {
   }
 
   goToProductDetails(id: number): void {
-    this.router.navigate([`products/${id}`])
+    this.router.navigate([`products/${id}`]);
+  }
+
+  async deleleProduct(id: number) {
+    if (id) {
+      this.products.splice(id - 1, 1);
+      return await this.apiService.deleteProduct(id);
+    }
   }
 }

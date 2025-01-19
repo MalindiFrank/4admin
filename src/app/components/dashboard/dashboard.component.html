@@ -1,13 +1,13 @@
 <p>dashboard works!</p>
 
 <div class="container">
-  <div
-    *ngFor="let product of products"
-    (click)="goToProductDetails(product.id)"
-  >
-    <img [src]="product.image" />
-    <p>{{ product.id }}</p>
-    <p>{{ product.title }}</p>
-    <p>R {{ product.price }}</p>
+  <div *ngFor="let product of products">
+    <div (click)="goToProductDetails(product.id)">
+      <img [src]="product.image" />
+      <p>{{ product.title }}</p>
+      <p>R {{ product.price }}</p>
+      <p>❤️ {{ product.rating.rate }}</p>
+    </div>
+    <button (click)="deleleProduct(product.id)">Delete</button>
   </div>
 </div>
