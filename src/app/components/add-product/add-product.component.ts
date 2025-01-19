@@ -46,7 +46,7 @@ export class AddProductComponent {
     const { title, price, description, image, category } =
       this.addProductForm.value;
 
-    let res = await this.apiService.addProduct({
+    await this.apiService.addProduct({
       title: title,
       price: price,
       description: description,
