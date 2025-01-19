@@ -23,7 +23,13 @@
 
     <div>
       <label for="description">Product description:</label>
-      <input id="description" formControlName="description" type="text" />
+      <textarea
+        id="description"
+        formControlName="description"
+        type="text"
+        cols="30"
+        rows="10"
+      ></textarea>
       <div *ngIf="f.description.touched && f.description.invalid">
         <small *ngIf="f.description.errors?.['required']"
           >Description for the product is required</small
@@ -51,7 +57,9 @@
       </div>
     </div>
 
-    <button type="submit" [disabled]="addProductForm.invalid">Add Product</button>
+    <button type="submit" [disabled]="addProductForm.invalid">
+      Add Product
+    </button>
 
     <div *ngIf="errorMessage">{{ errorMessage }}</div>
   </form>

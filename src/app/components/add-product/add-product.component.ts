@@ -53,6 +53,5 @@ export class AddProductComponent {
       image: image,
       category: category,
     });
-    console.log(res);
   }
 }
