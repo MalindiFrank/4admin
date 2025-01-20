@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../api/api.service';
-import { AddProductComponent } from '../../components/add-product/add-product.component';
 import { DashboardComponent } from "../../components/dashboard/dashboard.component";
 
 @Component({
   selector: 'app-admin',
-  imports: [AddProductComponent, DashboardComponent],
+  imports: [ DashboardComponent],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css',
 })
