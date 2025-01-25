@@ -46,10 +46,4 @@ export class LoginComponent {
   async onLogin() {
     this.router.navigate(['/admin'])
   }
-
-
-  //navigate to signup page
-  onSignup() {
-    this.router.navigate(['/signup']);
-  }
 }
