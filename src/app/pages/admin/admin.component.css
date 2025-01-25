@@ -1,24 +1,57 @@
+/* Admin Header */
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #2d3748;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1100; /* Ensure the header stays on top */
+}
+
+.admin-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.logout-button {
+  background-color: #4a5568;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #2d3748;
+}
+
 /* General Admin Layout */
 .admin-container {
   display: flex;
-  height: 100vh; /* Ensures the container takes full height */
-  flex-direction: row; /* Horizontal layout on larger screens */
+  height: 100vh;
+  flex-direction: row;
   overflow: hidden;
+  padding-top: 60px; /* Ensure space for header */
 }
 
 .nav-bar {
-  width: 250px; /* Sidebar width */
+  width: 250px;
   background-color: #2d3748;
   padding: 2rem;
-  position: fixed; /* Fixed sidebar */
-  top: 0;
+  position: fixed;
+  top: 60px; /* Adjust navbar position below the header */
   left: 0;
-  height: 100%;
+  height: calc(100% - 60px);
   color: white;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease; /* Smooth transition for collapsing sidebar */
-  z-index: 1000; /* Ensure the navbar stays on top */
+  transition: transform 0.3s ease;
+  z-index: 1000;
 }
 
 .nav-bar ul {
@@ -39,32 +72,33 @@
 
 /* Main content area */
 .main-content {
-  margin-left: 250px; /* Space for the sidebar */
+  margin-left: 250px;
   padding: 2rem;
   width: calc(100% - 250px);
   background-color: #f7f9fc;
   overflow-y: auto;
-  transition: margin-left 0.3s ease; /* Smooth transition when sidebar collapses */
+  transition: margin-left 0.3s ease;
 }
 
 /* Mobile / Tablet View: Responsive adjustments */
 @media (max-width: 768px) {
   .admin-container {
-    flex-direction: column; /* Stack the sidebar and main content */
+    flex-direction: column;
+    padding-top: 80px; /* Adjust for header space */
   }
 
   .nav-bar {
-    width: 250px; /* Sidebar width remains same on mobile */
-    height: 100%; /* Keep it full height */
-    position: fixed; /* Fixed sidebar */
-    top: 0;
-    left: -250px; /* Sidebar hidden off-screen */
-    transition: left 0.3s ease; /* Smooth transition for sliding sidebar */
-    z-index: 1000; /* Ensure the navbar stays on top */
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    top: 80px; /* Adjust position below header on mobile */
+    left: -250px;
+    transition: left 0.3s ease;
+    z-index: 1000;
   }
 
   .nav-bar.open {
-    left: 0; /* Show sidebar when toggled */
+    left: 0;
   }
 
   .nav-bar ul {
@@ -82,12 +116,12 @@
   .burger-menu {
     display: block;
     cursor: pointer;
-    position: fixed; /* Position burger menu at top-left */
+    position: fixed;
     top: 1rem;
     left: 1rem;
     font-size: 2rem;
-    color: white; /* Make burger icon visible */
-    z-index: 1100; /* Ensure the burger menu is above the navbar */
+    color: white;
+    z-index: 1100;
   }
 
   .burger-menu span {
@@ -98,10 +132,10 @@
   .main-content {
     margin-left: 0;
     width: 100%;
-    transition: margin-left 0.3s ease; /* Smooth transition for content */
+    transition: margin-left 0.3s ease;
   }
 
   .nav-bar.open + .main-content {
-    margin-left: 250px; /* Move content to the right when sidebar is visible */
+    margin-left: 250px;
   }
 }
