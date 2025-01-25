@@ -1,18 +1,28 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../api/api.service';
 import { DashboardComponent } from "../../components/dashboard/dashboard.component";
+import { RouterModule } from '@angular/router';
+import { ProductsComponent } from "../../components/products/products.component";
+import { AddProductComponent } from "../../components/add-product/add-product.component";
+import { UsersComponent } from "../../components/users/users.component";
 
 @Component({
   selector: 'app-admin',
-  imports: [ DashboardComponent],
+  imports: [DashboardComponent, RouterModule, ProductsComponent, AddProductComponent, UsersComponent],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css',
 })
 export class AdminComponent {
-
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {}
+
+  isNavOpen = false; // Control state of the sidebar on mobile
+
+  // Toggle sidebar visibility for small screens
+  toggleNav() {
+    this.isNavOpen = !this.isNavOpen;
+  }
 
   async getAllProducts() {
     let products = await this.apiService.getAllProducts();

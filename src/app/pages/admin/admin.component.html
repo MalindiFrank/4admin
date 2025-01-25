@@ -1,1 +1,34 @@
-<app-dashboard></app-dashboard>
+<!-- admin.component.html -->
+<div class="admin-container">
+  <!-- Left Nav Bar (Always Visible) on Larger Screens -->
+  <nav class="nav-bar" [class.open]="isNavOpen">
+    <ul>
+      <li [routerLink]="['/dashboard']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        Dashboard
+      </li>
+      <li [routerLink]="['/products']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        All Products
+      </li>
+      <li [routerLink]="['/add-product']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        Add Product
+      </li>
+      <li [routerLink]="['/users']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        Users
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Burger Menu for Small Screens (Mobile/Tablet) -->
+  <div class="burger-menu" (click)="toggleNav()">
+    <span>&#9776;</span> <!-- Hamburger Icon -->
+  </div>
+
+  <!-- Main Content Area (Right Side) -->
+  <div class="main-content">
+    <app-dashboard></app-dashboard>
+    <app-products></app-products>
+    <app-add-product></app-add-product>
+    <app-users></app-users>
+    <!-- <router-outlet></router-outlet> Active component displayed here -->
+  </div>
+</div>
