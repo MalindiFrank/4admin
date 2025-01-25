@@ -1,11 +1,97 @@
-
-img {
-  height: 5rem;
-  width: 5rem;
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
 }
 
 .product {
-  width: 40svw;
-  height: 60svh;
-  overflow-y: scroll;
+  max-width: 40rem; /* Limit the width for better readability */
+  width: 100%;
+  border-radius: 0.75rem;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  overflow: hidden;
+  padding: 1.5rem; /* Add internal spacing */
+  text-align: center; /* Center align text for consistency */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.product:hover {
+  transform: translateY(-0.4rem);
+  box-shadow: 0 0.8rem 1.8rem rgba(0, 0, 0, 0.15);
+}
+
+.product img {
+  width: 100%; /* Fully responsive */
+  height: 15rem; /* Fixed height for consistent size */
+  object-fit: cover; /* Ensures the image maintains aspect ratio */
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.product p {
+  margin: 0.5rem 0; /* Spacing between text elements */
+  font-size: 1rem;
+  color: #333333;
+}
+
+.product p:first-of-type {
+  font-weight: 600;
+  font-size: 1.2rem; /* Emphasize the ID */
+}
+
+.product p:nth-of-type(2) {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.product p:nth-of-type(3) {
+  font-size: 1rem;
+  color: #e63946; /* Price in red for emphasis */
+  font-weight: 600;
+}
+
+.product p:nth-of-type(4) {
+  font-size: 0.9rem;
+  color: #457b9d; /* Category in a soft blue */
+}
+
+.product p:last-of-type {
+  font-size: 0.95rem;
+  color: #666666;
+  text-align: justify; /* Justify description for better readability */
+  margin-top: 1rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  .product {
+    padding: 1rem;
+  }
+
+  .product img {
+    height: 12rem; /* Smaller image for mobile */
+  }
+
+  .product p {
+    font-size: 0.9rem;
+  }
+
+  .product p:first-of-type {
+    font-size: 1rem;
+  }
+
+  .product p:nth-of-type(2) {
+    font-size: 1rem;
+  }
+
+  .product p:last-of-type {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
 }
