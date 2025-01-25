@@ -1,0 +1,72 @@
+.table {
+  width: 100%;
+  padding: 2rem;
+  overflow-x: auto; /* Enables horizontal scrolling for small screens */
+  background-color: #f7f9fc;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  overflow: hidden; /* Ensures the border-radius applies */
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+thead {
+  background-color: #457b9d; /* Header background */
+  color: #ffffff;
+}
+
+th,
+td {
+  padding: 1rem;
+  text-align: left;
+  font-size: 1rem;
+}
+
+th {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2; /* Alternating row color for readability */
+}
+
+tbody tr:hover {
+  background-color: #e9ecef; /* Highlight row on hover */
+  cursor: pointer;
+}
+
+td:last-child {
+  text-align: center;
+  color: #e63946; /* Action column color */
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+td:last-child:hover {
+  color: #a4161a; /* Darker red on hover */
+}
+
+table,
+th,
+td {
+  border: 0.1rem solid #dee2e6; /* Subtle borders for a clean look */
+}
+
+@media (max-width: 768px) {
+  th,
+  td {
+    font-size: 0.85rem; /* Adjust text size for smaller screens */
+    padding: 0.8rem;
+  }
+
+  td:last-child {
+    font-size: 0.9rem;
+  }
+}
