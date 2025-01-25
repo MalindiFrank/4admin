@@ -25,7 +25,11 @@ export const routes: Routes = [
     component: ProductDetailsComponent,
     canActivate: [AuthGuard],
   },
-  { path: 'add-product', component: AddProductComponent, canActivate: [AuthGuard] },
+  {
+    path: 'add-product',
+    component: AddProductComponent,
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

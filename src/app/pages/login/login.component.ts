@@ -16,9 +16,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
-
 export class LoginComponent {
-  
   loginForm: FormGroup<{
     email: FormControl<string | null>;
     password: FormControl<string | null>;
@@ -31,19 +29,27 @@ export class LoginComponent {
     private router: Router,
     private fb: FormBuilder
   ) {
-    //initialize form validation **incomplete
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
-  //getter for easy access to form controls, **more to note
+  //getter.. easy access to form controls, **more to note
   get f() {
     return this.loginForm.controls;
   }
 
   async onLogin() {
-    this.router.navigate(['/admin'])
+    try {
+      const { email, password }: any = this.loginForm.value;
+      const token = await this.authService.onLogin(email, password);
+      if (token) {
+        localStorage.setItem('authToken', token);
+        this.router.navigate(['/admin']);
+      }
+    } catch (error: any) {
+      this.errorMessage = error.message;
+    }
   }
 }
