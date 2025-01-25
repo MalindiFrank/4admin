@@ -1,0 +1,110 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-color: #f7f9fc; /* Subtle background */
+  min-height: 100vh;
+}
+
+form {
+  width: 100%;
+  max-width: 30rem; /* Slightly wider than the login form to fit more fields */
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+form div {
+  margin-bottom: 1.5rem; /* Consistent spacing between form groups */
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333333;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 0.1rem solid #cccccc;
+  border-radius: 0.5rem;
+  outline: none;
+  resize: none; /* Disable resizing for textarea */
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #457b9d;
+  box-shadow: 0 0 0.2rem rgba(69, 123, 157, 0.3);
+}
+
+textarea {
+  height: 8rem; /* Set a consistent height for textareas */
+}
+
+small {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #e63946;
+}
+
+button {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #457b9d;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:disabled {
+  background-color: #cccccc; /* Disabled state */
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #1d3557;
+}
+
+.error-message {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #e63946;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  form {
+    padding: 1.5rem;
+  }
+
+  input,
+  textarea {
+    font-size: 0.95rem;
+  }
+
+  button {
+    font-size: 0.95rem;
+  }
+
+  small {
+    font-size: 0.8rem;
+  }
+}
