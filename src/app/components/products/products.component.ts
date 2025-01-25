@@ -11,6 +11,9 @@ import { ApiService } from '../../api/api.service';
 export class ProductsComponent {
   products: any = [];
 
+  popUpMsg: string | null = '';
+  isPopUp: boolean = false;
+
   constructor(private apiService: ApiService) {}
 
   async ngOnInit(): Promise<any> {
@@ -23,8 +26,20 @@ export class ProductsComponent {
 
   async deleleProduct(id: number) {
     if (id) {
-      this.products.splice(id - 1, 1);
-      return await this.apiService.deleteProduct(id);
+      try {
+        this.products.splice(id - 1, 1);
+        await this.apiService.deleteProduct(id);
+        return this.popUp('User deleted succesfully!');
+      } catch (error) {
+        this.popUp('User not deleted!');
+        console.error('Error: ', error);
+      }
     }
+  }
+
+  popUp(msg: string) {
+    this.popUpMsg = msg;
+    this.isPopUp = true;
+    setTimeout(() => (this.isPopUp = false), 2999);
   }
 }

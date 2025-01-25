@@ -55,6 +55,10 @@
         >
       </div>
     </div>
+    
+    <div *ngIf="isPopUp" class="pop-up-msg">
+      {{ popUpMsg }}
+    </div>
 
     <button type="submit" [disabled]="addProductForm.invalid">
       Add Product

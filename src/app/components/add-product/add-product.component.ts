@@ -25,6 +25,8 @@ export class AddProductComponent {
   }>;
 
   errorMessage: string | null = null;
+  isPopUp: boolean = false;
+  popUpMsg: string | null = '';
 
   constructor(private apiService: ApiService, private fb: FormBuilder) {
     //initialize form validation **incomplete
@@ -46,12 +48,25 @@ export class AddProductComponent {
     const { title, price, description, image, category } =
       this.addProductForm.value;
 
-    await this.apiService.addProduct({
-      title: title,
-      price: price,
-      description: description,
-      image: image,
-      category: category,
-    });
+    try {
+      await this.apiService.addProduct({
+        title: title,
+        price: price,
+        description: description,
+        image: image,
+        category: category,
+      });
+
+      this.popUp('Product added succesfully!');
+    } catch (error) {
+      this.popUp('Something Wrong Happened, Product not added');
+      console.error('Error: ', error);
+    }
+  }
+
+  popUp(msg: string) {
+    this.popUpMsg = msg;
+    this.isPopUp = true;
+    setTimeout(() => (this.isPopUp = false), 2999);
   }
 }

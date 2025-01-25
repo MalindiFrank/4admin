@@ -10,7 +10,7 @@ import { UsersComponent } from './components/users/users.component';
 import { AddProductComponent } from './components/add-product/add-product.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'admin', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
   {

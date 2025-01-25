@@ -19,6 +19,10 @@ thead {
   color: #ffffff;
 }
 
+tbody {
+  overflow-y: scroll;
+}
+
 th,
 td {
   padding: 1rem;
