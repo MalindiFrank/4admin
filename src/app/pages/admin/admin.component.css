@@ -18,6 +18,7 @@
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease; /* Smooth transition for collapsing sidebar */
+  z-index: 1000; /* Ensure the navbar stays on top */
 }
 
 .nav-bar ul {
@@ -53,51 +54,54 @@
   }
 
   .nav-bar {
-    width: 100%; /* Full width on top */
-    height: auto;
-    position: static; /* Allow it to move in the flow */
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    background-color: #2d3748;
-    padding: 1rem;
+    width: 250px; /* Sidebar width remains same on mobile */
+    height: 100%; /* Keep it full height */
+    position: fixed; /* Fixed sidebar */
+    top: 0;
+    left: -250px; /* Sidebar hidden off-screen */
+    transition: left 0.3s ease; /* Smooth transition for sliding sidebar */
+    z-index: 1000; /* Ensure the navbar stays on top */
+  }
+
+  .nav-bar.open {
+    left: 0; /* Show sidebar when toggled */
   }
 
   .nav-bar ul {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
     padding: 0;
     margin: 0;
   }
 
   .nav-bar li {
-    padding: 0.8rem;
-    font-size: 1rem;
-  }
-
-  .nav-bar li:hover {
-    background-color: #4a5568;
-  }
-
-  /* If sidebar is collapsed on mobile, the main content will expand */
-  .main-content {
-    margin-left: 0;
-    width: 100%;
-  }
-}
-
-/* Optional: Burger Menu (for a more compact mobile design) */
-@media (max-width: 768px) {
-  .nav-bar {
-    display: none; /* Hide sidebar by default on small screens */
-  }
-
-  .nav-bar.open {
-    display: flex; /* Show sidebar when toggled */
+    padding: 1rem;
+    font-size: 1.2rem;
   }
 
   .burger-menu {
     display: block;
     cursor: pointer;
+    position: fixed; /* Position burger menu at top-left */
+    top: 1rem;
+    left: 1rem;
+    font-size: 2rem;
+    color: white; /* Make burger icon visible */
+    z-index: 1100; /* Ensure the burger menu is above the navbar */
+  }
+
+  .burger-menu span {
+    display: block;
+    font-size: 2.5rem;
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    transition: margin-left 0.3s ease; /* Smooth transition for content */
+  }
+
+  .nav-bar.open + .main-content {
+    margin-left: 250px; /* Move content to the right when sidebar is visible */
   }
 }

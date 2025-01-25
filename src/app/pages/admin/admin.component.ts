@@ -23,17 +23,18 @@ export class AdminComponent {
   constructor() {}
 
   ngOnInit(): void {
-    this.handleView('dashboard');
+    this.activeView = 'dashboard';
   }
 
   isNavOpen: boolean = false;
   activeView: string | null = null;
 
-  toggleNav() {
+  toggleNav(): void {
     this.isNavOpen = !this.isNavOpen;
   }
 
   handleView(view: string): void {
     this.activeView = view;
+    this.toggleNav();
   }
 }

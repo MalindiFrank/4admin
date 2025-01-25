@@ -22,7 +22,7 @@ export class AuthService {
       })
       .catch((error) => console.error(error));
 
-    return token;
+    return true;
   }
 
   onLogout() {
