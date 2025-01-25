@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../auth/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import {
   FormBuilder,
   FormGroup,
@@ -9,10 +9,11 @@ import {
   Validators,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AdminComponent } from '../admin/admin.component';
 
 @Component({
   selector: 'app-login',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule, AdminComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
@@ -23,6 +24,7 @@ export class LoginComponent {
   }>;
 
   errorMessage: string | null = null;
+  activeView: string | null = null;
 
   constructor(
     private authService: AuthService,
@@ -33,6 +35,10 @@ export class LoginComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
+  }
+
+  ngOnInit(): void {
+    this.activeView = 'login';
   }
 
   //getter.. easy access to form controls, **more to note
@@ -46,10 +52,15 @@ export class LoginComponent {
       const token = await this.authService.onLogin(email, password);
       if (token) {
         localStorage.setItem('authToken', token);
-        this.router.navigate(['/admin']);
+        this.router.navigate(['/dashboard']);
+        this.handleView();
       }
     } catch (error: any) {
       this.errorMessage = error.message;
     }
+  }
+
+  handleView(): void {
+    this.activeView = 'admin';
   }
 }

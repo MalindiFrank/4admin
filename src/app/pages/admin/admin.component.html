@@ -10,10 +10,10 @@
 
   <nav class="nav-bar" [class.open]="isNavOpen">
     <ul>
-      <li (click)="handleView('dashboard')">Dashboard</li>
-      <li (click)="handleView('products')">All Products</li>
-      <li (click)="handleView('add-product')">Add Product</li>
-      <li (click)="handleView('users')">Users</li>
+      <li routerLink="/dashboard">Dashboard</li>
+      <li routerLink="/products">All Products</li>
+      <li routerLink="add-product">Add Product</li>
+      <li routerLink="/users">Users</li>
     </ul>
   </nav>
 
@@ -22,17 +22,6 @@
   </div>
 
   <div class="main-content">
-    <div *ngIf="activeView == 'dashboard'">
-      <app-dashboard></app-dashboard>
-    </div>
-    <div *ngIf="activeView == 'products'">
-      <app-products></app-products>
-    </div>
-    <div *ngIf="activeView == 'add-product'">
-      <app-add-product></app-add-product>
-    </div>
-    <div *ngIf="activeView == 'users'">
-      <app-users></app-users>
-    </div>
+    <router-outlet />
   </div>
 </div>

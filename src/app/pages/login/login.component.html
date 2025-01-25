@@ -1,4 +1,4 @@
-<div class="login-container">
+<div *ngIf="activeView == 'login'" class="login-container">
   <div class="header">
     <h1>4admin</h1>
     <p>Admin Panel Login</p>
@@ -19,16 +19,29 @@
         <label for="password">Password:</label>
         <input id="password" formControlName="password" type="password" />
         <div *ngIf="f.password.touched && f.password.invalid">
-          <small *ngIf="f.password.errors?.['required']">Password is required</small>
-          <small *ngIf="f.password.errors?.['minlength']">Password must be at least 6 characters</small>
+          <small *ngIf="f.password.errors?.['required']"
+            >Password is required</small
+          >
+          <small *ngIf="f.password.errors?.['minlength']"
+            >Password must be at least 6 characters</small
+          >
         </div>
       </div>
 
-      <button type="submit" [disabled]="loginForm.invalid">Login</button>
+      <button
+        type="submit"
+        (click)="handleView()"
+        [disabled]="loginForm.invalid"
+      >
+        Login
+      </button>
 
       <div *ngIf="errorMessage" class="error-message">
         {{ errorMessage }}
       </div>
     </form>
   </div>
+</div>
+<div *ngIf="activeView == 'admin'">
+  <app-admin></app-admin>
 </div>

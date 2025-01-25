@@ -23,7 +23,7 @@ export class AdminComponent {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.activeView = 'dashboard';
+    this.activeView = 'dashboardd';
   }
 
   isNavOpen: boolean = false;
@@ -38,7 +38,7 @@ export class AdminComponent {
     this.toggleNav();
   }
 
-  onLogout():void {
-    this.router.navigate(['/login'])
+  onLogout(): void {
+    this.router.navigate(['/login']);
   }
 }
