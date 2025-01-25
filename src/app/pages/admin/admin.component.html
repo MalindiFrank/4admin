@@ -3,32 +3,29 @@
   <!-- Left Nav Bar (Always Visible) on Larger Screens -->
   <nav class="nav-bar" [class.open]="isNavOpen">
     <ul>
-      <li [routerLink]="['/dashboard']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-        Dashboard
-      </li>
-      <li [routerLink]="['/products']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-        All Products
-      </li>
-      <li [routerLink]="['/add-product']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-        Add Product
-      </li>
-      <li [routerLink]="['/users']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-        Users
-      </li>
+      <li (click)="handleView('dashboard')">Dashboard</li>
+      <li (click)="handleView('products')">All Products</li>
+      <li (click)="handleView('add-product')">Add Product</li>
+      <li (click)="handleView('users')">Users</li>
     </ul>
   </nav>
 
-  <!-- Burger Menu for Small Screens (Mobile/Tablet) -->
   <div class="burger-menu" (click)="toggleNav()">
-    <span>&#9776;</span> <!-- Hamburger Icon -->
+    <span>&#9776;</span>
   </div>
 
-  <!-- Main Content Area (Right Side) -->
   <div class="main-content">
-    <app-dashboard></app-dashboard>
-    <app-products></app-products>
-    <app-add-product></app-add-product>
-    <app-users></app-users>
-    <!-- <router-outlet></router-outlet> Active component displayed here -->
+    <div *ngIf="activeView == 'dashboard'">
+      <app-dashboard></app-dashboard>
+    </div>
+    <div *ngIf="activeView == 'products'">
+      <app-products></app-products>
+    </div>
+    <div *ngIf="activeView == 'add-product'">
+      <app-add-product></app-add-product>
+    </div>
+    <div *ngIf="activeView == 'users'">
+      <app-users></app-users>
+    </div>
   </div>
 </div>

@@ -1,68 +1,39 @@
 import { Component } from '@angular/core';
-import { ApiService } from '../../api/api.service';
-import { DashboardComponent } from "../../components/dashboard/dashboard.component";
+import { DashboardComponent } from '../../components/dashboard/dashboard.component';
 import { RouterModule } from '@angular/router';
-import { ProductsComponent } from "../../components/products/products.component";
-import { AddProductComponent } from "../../components/add-product/add-product.component";
-import { UsersComponent } from "../../components/users/users.component";
+import { ProductsComponent } from '../../components/products/products.component';
+import { AddProductComponent } from '../../components/add-product/add-product.component';
+import { UsersComponent } from '../../components/users/users.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-admin',
-  imports: [DashboardComponent, RouterModule, ProductsComponent, AddProductComponent, UsersComponent],
+  imports: [
+    CommonModule,
+    DashboardComponent,
+    RouterModule,
+    ProductsComponent,
+    AddProductComponent,
+    UsersComponent,
+  ],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css',
 })
 export class AdminComponent {
-  constructor(private apiService: ApiService) {}
+  constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.handleView('dashboard');
+  }
 
-  isNavOpen = false; // Control state of the sidebar on mobile
+  isNavOpen: boolean = false;
+  activeView: string | null = null;
 
-  // Toggle sidebar visibility for small screens
   toggleNav() {
     this.isNavOpen = !this.isNavOpen;
   }
 
-  async getAllProducts() {
-    let products = await this.apiService.getAllProducts();
-    console.log(products);
-  }
-
-  async getOneProduct() {
-    let res = await this.apiService.getOneProduct(1);
-    console.log(res);
-  }
-
-  async addProduct() {
-    let res = await this.apiService.addProduct({
-      title: 'test product',
-      price: 13.5,
-      description: 'lorem ipsum set',
-      image: 'https://i.pravatar.cc',
-      category: 'electronic',
-    });
-    console.log(res);
-  }
-
-  async updateProduct() {
-    let res = await this.apiService.updateProduct(9, {
-      title: 'test product',
-      price: 13.5,
-      description: 'lorem ipsum set',
-      image: 'https://i.pravatar.cc',
-      category: 'electronic',
-    });
-    console.log(res);
-  }
-
-  async deleteProduct() {
-    let res = await this.apiService.deleteProduct(2);
-    console.log(res);
-  }
-
-  async getUsers() {
-    let users = await this.apiService.getAllUsers();
-    console.log(users);
+  handleView(view: string): void {
+    this.activeView = view;
   }
 }
