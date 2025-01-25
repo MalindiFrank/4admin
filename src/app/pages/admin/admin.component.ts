@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DashboardComponent } from '../../components/dashboard/dashboard.component';
-import { RouterModule } from '@angular/router';
+import { Route, Router, RouterModule } from '@angular/router';
 import { ProductsComponent } from '../../components/products/products.component';
 import { AddProductComponent } from '../../components/add-product/add-product.component';
 import { UsersComponent } from '../../components/users/users.component';
@@ -20,7 +20,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './admin.component.css',
 })
 export class AdminComponent {
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.activeView = 'dashboard';
@@ -36,5 +36,9 @@ export class AdminComponent {
   handleView(view: string): void {
     this.activeView = view;
     this.toggleNav();
+  }
+
+  onLogout():void {
+    this.router.navigate(['/login'])
   }
 }

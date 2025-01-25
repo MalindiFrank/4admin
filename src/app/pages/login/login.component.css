@@ -1,23 +1,53 @@
-.container {
+/* General Container */
+.login-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh; /* Full viewport height */
   background-color: #f7f9fc; /* Subtle background color */
-  padding: 2rem;
+  flex-direction: row; /* Default to side-by-side */
 }
 
+.header {
+  width: 50%; /* Left section width */
+  background-color: #457b9d;
+  color: white;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Ensure it takes full height */
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.header p {
+  font-size: 1.2rem;
+  margin-top: 0;
+}
+
+.login-form-container {
+  width: 50%; /* Right section width */
+  background-color: white;
+  padding: 3rem;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+  height: 100%; /* Ensure it takes full height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Form Styles */
 form {
   width: 100%;
-  max-width: 25rem; /* Limit form width for readability */
-  background-color: #ffffff;
-  padding: 2rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
 }
 
 form div {
-  margin-bottom: 1.5rem; /* Space between form groups */
+  margin-bottom: 1.5rem;
 }
 
 label {
@@ -33,7 +63,6 @@ input {
   padding: 0.8rem;
   font-size: 1rem;
   border: 0.1rem solid #cccccc;
-  border-radius: 0.5rem;
   outline: none;
   transition: border-color 0.2s ease-in-out;
 }
@@ -47,7 +76,7 @@ small {
   display: block;
   margin-top: 0.5rem;
   font-size: 0.85rem;
-  color: #e63946; /* Error message in red */
+  color: #e63946;
 }
 
 button {
@@ -58,7 +87,6 @@ button {
   color: #ffffff;
   background-color: #457b9d;
   border: none;
-  border-radius: 0.5rem;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
 }
@@ -79,24 +107,25 @@ button:hover:not(:disabled) {
   text-align: center;
 }
 
+/* Mobile View Adjustments */
 @media (max-width: 768px) {
-  .container {
-    padding: 1.5rem;
+  .login-container {
+    flex-direction: column; /* Stack header and form vertically */
+    padding: 1rem;
   }
 
-  form {
-    padding: 1.5rem;
+  .header,
+  .login-form-container {
+    width: 100%; /* Full width on smaller screens */
+    padding: 2rem;
+    box-shadow: none; /* Remove shadow for mobile */
   }
 
-  input {
-    font-size: 0.95rem;
+  .header {
+    height: auto; /* Let the header take up as much space as it needs */
   }
 
-  button {
-    font-size: 0.95rem;
-  }
-
-  small {
-    font-size: 0.8rem;
+  .login-form-container {
+    height: auto; /* Allow the form to adapt to content height */
   }
 }
