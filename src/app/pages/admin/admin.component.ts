@@ -1,21 +1,13 @@
 import { Component } from '@angular/core';
-import { DashboardComponent } from '../../components/dashboard/dashboard.component';
-import { Route, Router, RouterModule } from '@angular/router';
-import { ProductsComponent } from '../../components/products/products.component';
-import { AddProductComponent } from '../../components/add-product/add-product.component';
-import { UsersComponent } from '../../components/users/users.component';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-admin',
   imports: [
     CommonModule,
-    DashboardComponent,
-    RouterModule,
-    ProductsComponent,
-    AddProductComponent,
-    UsersComponent,
-  ],
+    RouterModule
+],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css',
 })

@@ -10,10 +10,10 @@
 
   <nav class="nav-bar" [class.open]="isNavOpen">
     <ul>
-      <li routerLink="/dashboard">Dashboard</li>
-      <li routerLink="/products">All Products</li>
-      <li routerLink="add-product">Add Product</li>
-      <li routerLink="/users">Users</li>
+      <li routerLink="/dashboard" (click)="toggleNav()" >Dashboard</li>
+      <li routerLink="/products" (click)="toggleNav()" >All Products</li>
+      <li routerLink="add-product" (click)="toggleNav()" >Add Product</li>
+      <li routerLink="/users" (click)="toggleNav()" >Users</li>
     </ul>
   </nav>
 
