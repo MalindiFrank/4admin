@@ -31,6 +31,7 @@ export class AdminComponent {
   }
 
   onLogout(): void {
-    this.router.navigate(['/login']);
+    location.reload();
+    setTimeout(() => this.router.navigate(['/login']), 1200);
   }
 }
